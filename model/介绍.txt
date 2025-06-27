@@ -1,0 +1,13 @@
+1. 首先进行模型训练和模型剪枝部分
+    - 首先进行约束训练，文件在prune中的 train_retu.py，记得将
+    model.train(data="/home/lyj/local/Project/pre_data/combined_data.yaml", amp=False, imgsz=640, epochs=50, batch=20, device=0, workers=0)
+    的 combined_data.yaml 进行修改成本地的data.yaml的位置
+    - 然后进行剪枝训练，在prune 中的prune.py 文件进行模型剪枝，是将 训练生成的 pt文件在进行剪枝训练，然后会在当前路径下生成剪枝完的模型（路径可以自定义设置）
+    - 最后进行回调训练，文件在prune中的 train.py 中，记得将需要训练的模型调整为剪枝完的模型
+注意：每一次训练出来的模型都在runs中    
+    这样就可以生成一个 剪枝完的pt模型
+
+2. GUI界面使用
+GUI界面就是那个GUI.py 文件
+首先选择pt模型，然后选择需要推理的文件夹，点击推理就可以进行推理了。
+
